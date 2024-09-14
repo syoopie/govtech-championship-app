@@ -3,14 +3,27 @@ import TeamInput from "../components/TeamInput";
 import MatchInput from "../components/MatchInput";
 import TeamTable from "../components/TeamTable";
 import MatchTable from "../components/MatchTable";
+import GroupRankings from "../components/GroupRankings";
 import { parseTeams, parseMatches } from "../utils/helpers";
 import { Match, Team } from "../types";
-import { Tabs, Tab, Box, Paper, Typography, Grid2 } from "@mui/material";
+import {
+    Tabs,
+    Tab,
+    Box,
+    Paper,
+    Typography,
+    Grid2,
+    Button,
+    Dialog,
+    DialogContent,
+    DialogActions,
+} from "@mui/material";
 
 const Home: React.FC = () => {
     const [teams, setTeams] = useState<Team[]>([]);
     const [matches, setMatches] = useState<Match[]>([]);
     const [selectedTab, setSelectedTab] = useState<number>(0);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleTeamSubmit = (input: string) => {
         const parsedTeams = parseTeams(input);
@@ -34,6 +47,14 @@ const Home: React.FC = () => {
     const handleDeleteMatch = (index: number) => {
         const newMatches = matches.filter((_, i) => i !== index);
         setMatches(newMatches);
+    };
+
+    const handleOpenDialog = () => {
+        setIsDialogOpen(true);
+    };
+
+    const handleCloseDialog = () => {
+        setIsDialogOpen(false);
     };
 
     return (
@@ -75,6 +96,16 @@ const Home: React.FC = () => {
                 </Grid2>
             </Paper>
 
+            <Box my={4} textAlign="center">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleOpenDialog}
+                >
+                    View Group Rankings
+                </Button>
+            </Box>
+
             <Paper
                 elevation={2}
                 sx={{ padding: 2, borderRadius: 3, marginBottom: 4 }}
@@ -114,6 +145,22 @@ const Home: React.FC = () => {
                     </Paper>
                 )}
             </Box>
+
+            <Dialog
+                open={isDialogOpen}
+                onClose={handleCloseDialog}
+                maxWidth="md"
+                fullWidth
+            >
+                <DialogContent>
+                    <GroupRankings teams={teams} matches={matches} />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseDialog} color="primary">
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };

@@ -10,3 +10,13 @@ export interface Match {
     scoreA: number;
     scoreB: number;
 }
+
+interface TeamRanking {
+    teamName: string;
+    points: number;
+}
+
+export interface GroupRanking {
+    groupNum: number;
+    teams: TeamRanking[];
+}
