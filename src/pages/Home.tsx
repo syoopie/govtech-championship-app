@@ -107,7 +107,7 @@ const Home: React.FC = () => {
             </Box>
 
             <Paper
-                elevation={2}
+                elevation={4}
                 sx={{ padding: 2, borderRadius: 3, marginBottom: 4 }}
             >
                 <Tabs
@@ -124,27 +124,22 @@ const Home: React.FC = () => {
                             color: "#1976d2",
                         },
                     }}
+                    className="mb-4"
                 >
                     <Tab label="Teams" />
                     <Tab label="Matches" />
                 </Tabs>
-            </Paper>
 
-            <Box mt={4}>
                 {selectedTab === 0 && (
-                    <Paper elevation={3} sx={{ padding: 3 }}>
-                        <TeamTable teams={teams} onDelete={handleDeleteTeam} />
-                    </Paper>
+                    <TeamTable teams={teams} onDelete={handleDeleteTeam} />
                 )}
                 {selectedTab === 1 && (
-                    <Paper elevation={3} sx={{ padding: 3 }}>
-                        <MatchTable
-                            matches={matches}
-                            onDelete={handleDeleteMatch}
-                        />
-                    </Paper>
+                    <MatchTable
+                        matches={matches}
+                        onDelete={handleDeleteMatch}
+                    />
                 )}
-            </Box>
+            </Paper>
 
             <Dialog
                 open={isDialogOpen}
