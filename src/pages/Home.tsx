@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import React, { useState } from "react";
 import TeamInput from "../components/TeamInput";
 import MatchInput from "../components/MatchInput";
@@ -15,12 +14,12 @@ const Home: React.FC = () => {
 
     const handleTeamSubmit = (input: string) => {
         const parsedTeams = parseTeams(input);
-        setTeams(parsedTeams);
+        setTeams((prevTeams) => [...prevTeams, ...parsedTeams]);
     };
 
     const handleMatchSubmit = (input: string) => {
         const parsedMatches = parseMatches(input);
-        setMatches(parsedMatches);
+        setMatches((prevMatches) => [...prevMatches, ...parsedMatches]);
     };
 
     const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
@@ -28,8 +27,8 @@ const Home: React.FC = () => {
     };
 
     const handleDeleteTeam = (index: number) => {
-        const newTeams = teams.filter((_, i) => i !== index); // Remove the selected team
-        setTeams(newTeams); // Update state
+        const newTeams = teams.filter((_, i) => i !== index);
+        setTeams(newTeams);
     };
 
     const handleDeleteMatch = (index: number) => {
