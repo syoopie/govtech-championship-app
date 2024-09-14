@@ -29,7 +29,7 @@ const MatchInput: React.FC<MatchInputProps> = ({ onMatchSubmit }) => {
             ></textarea>
             <button
                 type="submit"
-                className="mt-2 bg-green-500 text-white py-2 px-4 rounded"
+                className="mt-2 bg-blue-500 text-white py-2 px-4 rounded"
             >
                 Submit Matches
             </button>
