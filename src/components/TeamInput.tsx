@@ -20,7 +20,6 @@ const TeamInput: React.FC<TeamInputProps> = ({ onTeamSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit} className="my-4">
-            <label className="block text-gray-700">Enter Team Info:</label>
             <textarea
                 value={teamInput}
                 onChange={handleChange}

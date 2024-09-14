@@ -20,7 +20,6 @@ const MatchInput: React.FC<MatchInputProps> = ({ onMatchSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit} className="my-4">
-            <label className="block text-gray-700">Enter Match Results:</label>
             <textarea
                 value={matchInput}
                 onChange={handleChange}

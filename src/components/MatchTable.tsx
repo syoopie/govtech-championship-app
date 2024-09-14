@@ -96,9 +96,7 @@ const MatchTable: React.FC<MatchListProps> = ({ matches, onDelete }) => {
                                     fontWeight: "bold",
                                     textAlign: "center",
                                 }}
-                            >
-                                Actions
-                            </TableCell>
+                            ></TableCell>
                         </TableRow>
                     </TableHead>
 

@@ -89,9 +89,7 @@ const TeamTable: React.FC<TeamTableProps> = ({ teams, onDelete }) => {
                                     fontWeight: "bold",
                                     textAlign: "center",
                                 }}
-                            >
-                                Actions
-                            </TableCell>
+                            ></TableCell>
                         </TableRow>
                     </TableHead>
 
