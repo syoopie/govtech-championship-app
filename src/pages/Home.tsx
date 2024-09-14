@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import TeamInput from "../components/TeamInput";
 import MatchInput from "../components/MatchInput";
-import TeamList from "../components/TeamList";
-import MatchList from "../components/MatchList";
+import TeamTable from "../components/TeamTable";
+import MatchTable from "../components/MatchTable";
 import { parseTeams, parseMatches } from "../utils/helpers";
 import { Match, Team } from "../types";
 import { Tabs, Tab, Box, Paper, Typography, Grid2 } from "@mui/material";
@@ -25,6 +25,16 @@ const Home: React.FC = () => {
 
     const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
         setSelectedTab(newValue);
+    };
+
+    const handleDeleteTeam = (index: number) => {
+        const newTeams = teams.filter((_, i) => i !== index); // Remove the selected team
+        setTeams(newTeams); // Update state
+    };
+
+    const handleDeleteMatch = (index: number) => {
+        const newMatches = matches.filter((_, i) => i !== index);
+        setMatches(newMatches);
     };
 
     return (
@@ -93,12 +103,15 @@ const Home: React.FC = () => {
             <Box mt={4}>
                 {selectedTab === 0 && (
                     <Paper elevation={3} sx={{ padding: 3 }}>
-                        <TeamList teams={teams} />
+                        <TeamTable teams={teams} onDelete={handleDeleteTeam} />
                     </Paper>
                 )}
                 {selectedTab === 1 && (
                     <Paper elevation={3} sx={{ padding: 3 }}>
-                        <MatchList matches={matches} />
+                        <MatchTable
+                            matches={matches}
+                            onDelete={handleDeleteMatch}
+                        />
                     </Paper>
                 )}
             </Box>
