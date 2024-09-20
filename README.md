@@ -1,46 +1,102 @@
-# Getting Started with Create React App
+# GovTech Championship App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React-based web application for tracking results and managing teams in a championship setting.
 
-## Available Scripts
+Prerequisites
+To run this application, ensure that the following software is installed on your machine:
 
-In the project directory, you can run:
+Docker
+Docker Compose
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```plaintext
+Copy code
+govtech-championship-app/
+├── node_modules/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   ├── utils/
+│   ├── App.tsx
+│   ├── index.tsx
+│   ├── ...
+├── .gitignore
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── package-lock.json
+├── README.md
+├── tailwind.config.js
+└── tsconfig.json
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to Run the Project
 
-### `npm test`
+Step 1: Clone the Repository
+First, you need to clone the repository to your local machine:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+Copy code
+git clone https://github.com/your-username/govtech-championship-app.git
+cd govtech-championship-app
+```
 
-### `npm run build`
+Step 2: Run the Application Using Docker Compose
+With Docker and Docker Compose installed, you can easily build and run the app in a containerized environment.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run the following command:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+Copy code
+docker-compose up
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This command will build the Docker image and start the container. The app will be available at http://localhost:3000.
 
-### `npm run eject`
+Step 3: Stop the Application
+To stop the application, press Ctrl + C in the terminal where the docker-compose up command is running. Alternatively, you can stop the containers using:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+Copy code
+docker-compose down
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This will stop and remove the containers but keep the images and volumes intact.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Environment Variables
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The app uses the following environment variables that can be modified in the docker-compose.yml or Dockerfile:
 
-## Learn More
+```plaintext
+PORT: The port where the app is exposed (default: 3000)
+NODE_ENV: Defines the environment type (default: production)
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Building the Image Manually (Optional)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you want to build the Docker image manually, you can run the following commands:
+
+Build the Docker image:
+
+```bash
+Copy code
+docker build -t govtech-championship-app .
+```
+
+Run the image:
+
+```bash
+Copy code
+docker run -p 3000:3000 govtech-championship-app
+```
+
+## Notes
+
+Ensure that Docker and Docker Compose are properly installed and running on your machine before executing the commands.
+The application serves the production build of the React app using a simple HTTP server (serve).
+Tailwind CSS is used for styling.
+
+I am currently also working full time as an intern an did not have time to flesh out the project very well. I hope whoever is grading this project can understand. Thank you for your time!
